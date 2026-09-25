@@ -1,0 +1,22 @@
+name: Build Orbit Browser
+on:
+  workflow_dispatch:
+  push:
+    tags: ['orbit-v*']
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Build
+        run: cargo build --release
+      - name: Package
+        shell: pwsh
+        run: Compress-Archive -Path target/release/orbit-browser.exe -DestinationPath Orbit-Browser-Windows.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Orbit-Browser-Windows
+          path: Orbit-Browser-Windows.zip
