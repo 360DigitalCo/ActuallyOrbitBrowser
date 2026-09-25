@@ -7,7 +7,7 @@ description = "Orbit Browser — a memory-conscious Rust browser shell for 360Di
 
 [dependencies]
 iced = { version = "0.14", features = ["advanced", "image", "tokio", "lazy"] }
-iced_webview_v2 = { version = "0.1.12", default-features = false, features = ["servo"] }
+iced_webview_v2 = { git = "https://github.com/franzos/iced_webview_v2", default-features = false, features = ["servo"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 url = "2"
